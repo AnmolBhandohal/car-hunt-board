@@ -24,6 +24,7 @@ ul{list-style:none;padding:0;margin:8px 0} li{margin:5px 0;font-size:17px}
 .ask{display:block;text-align:center;background:#fff;border:3px dashed #888;border-radius:14px;padding:16px;font-weight:800;font-size:19px;
  color:#1b1b1b;text-decoration:none;margin-top:8px}
 .empty{color:#666;font-size:17px;margin:4px}
+.far{display:inline-block;background:#fef3c7;color:#92400e;font-weight:800;font-size:17px;padding:4px 10px;border-radius:8px;margin:2px 0 4px}
 .askbox{background:#fff;border-radius:16px;padding:14px;box-shadow:0 1px 4px rgba(0,0,0,.12)} .askt{font-size:17px;margin-bottom:10px}
 #dadurl{width:100%;font-size:18px;padding:14px;border:2px solid #999;border-radius:12px}
 #dadbtn{width:100%;margin-top:10px;font-size:20px;font-weight:800;padding:14px;border:0;border-radius:12px;background:#16a34a;color:#fff}
@@ -31,7 +32,7 @@ ul{list-style:none;padding:0;margin:8px 0} li{margin:5px 0;font-size:17px}
 .askbox{border:3px solid #16a34a}
 .foot{color:#888;font-size:13px;margin-top:24px;text-align:center}
 </style></head><body><div class="w">
-<h1>🚗 Anmol's Car Hunt</h1><div class="upd">Updated Mon Nov 23, 12:01 PM · checks Kijiji, AutoTrader and Marketplace all day</div>
+<h1>🚗 Anmol's Car Hunt</h1><div class="upd">Updated Mon Nov 23, 12:03 PM · checks Kijiji, AutoTrader and Marketplace all day</div>
 <h2 style="margin-top:6px">🔎 Found a car? I'll check it</h2>
 <div class="askbox"><div class="askt">Copy the ad's link (Marketplace, Kijiji or AutoTrader), paste it here, and tap <b>Check this car</b>.</div>
 <input id="dadurl" type="url" inputmode="url" placeholder="Paste the ad link here">
@@ -49,8 +50,9 @@ async function dadSend(){const i=document.getElementById('dadurl'),m=document.ge
     <div class="cb">
       <div class="ct">2015 Kia sorento</div>
       <div class="cp">$6,500</div>
-      <div class="save">About $4,100 below what this car usually sells for</div>
+      <div class="save">About $3,900 below what this car usually sells for</div>
       <div class="ln">147,000 km · Edmonton · private seller</div>
+      
       <div class="sum">Cheap V6 Sorento, but mismatched wheels, out-of-province seller, and night photos mean inspect for hidden problems.</div>
       <ul><li>✅ V6 engine avoids Theta II issue</li><li>✅ 147,000 km is low for 2015</li><li>⚠️ Out-of-province phone number raises curbstoner concern</li></ul>
       <div class="meta">On Kijiji · listed 24 h ago</div>
@@ -67,6 +69,7 @@ async function dadSend(){const i=document.getElementById('dadurl'),m=document.ge
       <div class="cp">$6,500</div>
       <div class="save">About $3,200 below what this car usually sells for</div>
       <div class="ln">204,000 km · Edmonton · private seller</div>
+      
       <div class="sum">Cheap AWD SUV but high km and paint issues; check for rust, liens and service records first.</div>
       <ul><li>✅ AWD with extra winter tires included</li><li>✅ Heated seats and Bluetooth listed</li><li>⚠️ 33% below fair value needs explanation and VIN check</li></ul>
       <div class="meta">On Kijiji · listed 1 h ago</div>
@@ -80,8 +83,9 @@ async function dadSend(){const i=document.getElementById('dadurl'),m=document.ge
     <div class="cb">
       <div class="ct">2016 Honda odyssey</div>
       <div class="cp">$8,900</div>
-      <div class="save">About $5,800 below what this car usually sells for</div>
+      <div class="save">About $5,400 below what this car usually sells for</div>
       <div class="ln">218,000 km · Edmonton · private seller</div>
+      
       <div class="sum">Low price but high km; must prove timing belt done and check rust before buying.</div>
       <ul><li>✅ Reliability tier A for Odyssey</li><li>✅ EX has backup camera and heated seats</li><li>⚠️ No VIN or timing-belt receipt in ad</li></ul>
       <div class="meta">On Kijiji · listed 16 days ago</div>
@@ -97,6 +101,7 @@ async function dadSend(){const i=document.getElementById('dadurl'),m=document.ge
       <div class="cp">$8,200</div>
       <div class="save">About $3,400 below what this car usually sells for</div>
       <div class="ln">180,000 km · Edmonton · private seller</div>
+      
       <div class="sum">AWD SUV at a low price, but high km and no service history — inspect carefully before buying.</div>
       <ul><li>✅ AWD is useful for Edmonton winters</li><li>✅ Heated seats and steering wheel add comfort</li><li>⚠️ Price 30% below fair value needs explanation</li></ul>
       <div class="meta">On Kijiji · listed 4 days ago</div>
@@ -110,8 +115,9 @@ async function dadSend(){const i=document.getElementById('dadurl'),m=document.ge
     <div class="cb">
       <div class="ct">2015 Toyota Camry XLE</div>
       <div class="cp">$10,000</div>
-      <div class="save">About $4,400 below what this car usually sells for</div>
+      <div class="save">About $4,500 below what this car usually sells for</div>
       <div class="ln">145,000 km · Westlock · private seller</div>
+      
       <div class="sum">Auction ad, not a private sale; get VIN, fees, rust check and inspection before bidding.</div>
       <ul><li>✅ A-tier Camry reliability</li><li>✅ 145,000 km is moderate for 2015</li><li>⚠️ External auction listing with estimated hammer price; seller type mismatched</li></ul>
       <div class="meta">On Kijiji · listed 34 h ago</div>
@@ -127,6 +133,7 @@ async function dadSend(){const i=document.getElementById('dadurl'),m=document.ge
       <div class="cp">$9,368</div>
       <div class="save">About $1,300 below what this car usually sells for</div>
       <div class="ln">162,794 km · Edmonton · dealer</div>
+      
       <div class="sum">Dealer says clean history and warranty; good price, but check fees and front bumper damage first.</div>
       <ul><li>✅ Price 14% below estimated private fair value</li><li>✅ Reliability tier A for this model</li><li>⚠️ No VIN shown; verify clean Carfax and lien-free status</li></ul>
       <div class="meta">On Kijiji · listed 22 h ago</div>
@@ -142,9 +149,10 @@ async function dadSend(){const i=document.getElementById('dadurl'),m=document.ge
       <div class="cp">$3,900</div>
       <div class="save">About $2,900 below what this car usually sells for</div>
       <div class="ln">198,000 km · Edmonton · private seller</div>
+      
       <div class="sum">Cheap high-km Hyundai; verify title, liens, rust and service history before buying.</div>
       <ul><li>✅ Low asking price versus fair estimate</li><li>✅ Ad claims runs and drives with no issues</li><li>⚠️ Price is 38% below estimated fair value—verify title, lien and accident history first</li></ul>
-      <div class="meta">On Kijiji · listed 23 h ago</div>
+      <div class="meta">On Kijiji · listed 24 h ago</div>
       <div class="b2"><a class="bt p" href="https://www.kijiji.ca/v-cars-trucks/edmonton/2014-hyundai-elantra/1746537646" target="_blank" rel="noopener">Open the ad</a>
         <a class="bt" href="https://www.google.com/maps/search/?api=1&query=Edmonton%2C+Alberta" target="_blank" rel="noopener">Directions</a></div>
     </div>
