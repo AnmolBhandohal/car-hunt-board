@@ -1,178 +1,255 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="carhunt-version" content="v3">
 <meta name="robots" content="noindex,nofollow"><meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Car Deals"><meta name="application-name" content="Car Deals"><title>Anmol's Car Hunt</title>
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=2"><link rel="apple-touch-icon" href="apple-touch-icon.png?v=2">
-<link rel="manifest" href="manifest.json?v=2"><meta name="theme-color" content="#1a3a9c">
+<link rel="manifest" href="manifest.json?v=2"><meta name="theme-color" content="#f7f4ee">
 <style>
-*{box-sizing:border-box} body{margin:0;background:#f4f4f2;color:#1b1b1b;font:18px/1.4 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
-.w{max-width:560px;margin:0 auto;padding:14px 12px 40px}
-h1{font-size:26px;margin:6px 4px 2px} .upd{color:#444;font-size:16px;margin:0 4px 14px}
-.alert{background:#dc2626;color:#fff;border-radius:14px;padding:14px 16px;margin-bottom:16px;font-size:18px}
-.alert b{display:block;font-size:21px;margin-bottom:4px}
-h2{font-size:21px;margin:22px 4px 10px}
-.c{position:relative;background:#fff;border-radius:16px;overflow:hidden;margin-bottom:16px;box-shadow:0 1px 4px rgba(0,0,0,.12)}
-.c img,.noimg{width:100%;height:230px;object-fit:cover;display:block;background:#ddd}
-.noimg{display:flex;align-items:center;justify-content:center;color:#777}
-.tag{position:absolute;top:10px;left:10px;pointer-events:none;background:#16a34a;color:#fff;font-weight:800;padding:6px 12px;border-radius:999px;font-size:16px}
-.cb{padding:12px 14px 14px} .ct{font-size:21px;font-weight:800} .cp{font-size:30px;font-weight:900;margin:2px 0}
-.save{color:#15803d;font-weight:800;font-size:18px} .ln{margin:6px 0;font-size:18px;color:#111;font-weight:600}
-.sum{font-size:17px;margin:6px 0;color:#222;font-style:italic}
-ul{list-style:none;padding:0;margin:8px 0} li{margin:5px 0;font-size:17px}
-.meta{color:#444;font-size:16px;margin-top:6px}
-.b2{display:flex;gap:10px;margin-top:12px} .bt{flex:1;text-align:center;border-radius:12px;padding:14px 6px;font-weight:800;font-size:18px;
- border:2px solid #1b1b1b;color:#1b1b1b;text-decoration:none} .bt.p{background:#1d4ed8;border-color:#1d4ed8;color:#fff}
-.ask{display:block;text-align:center;background:#fff;border:3px dashed #888;border-radius:14px;padding:16px;font-weight:800;font-size:19px;
- color:#1b1b1b;text-decoration:none;margin-top:8px}
-.empty{color:#666;font-size:17px;margin:4px}
-.far{display:inline-block;background:#fef3c7;color:#92400e;font-weight:800;font-size:17px;padding:4px 10px;border-radius:8px;margin:2px 0 4px}
-.askbox{background:#fff;border-radius:16px;padding:14px;box-shadow:0 1px 4px rgba(0,0,0,.12)} .askt{font-size:17px;margin-bottom:10px}
-#dadurl{width:100%;font-size:18px;padding:14px;border:2px solid #999;border-radius:12px}
-#dadbtn{width:100%;margin-top:10px;font-size:20px;font-weight:800;padding:14px;border:0;border-radius:12px;background:#16a34a;color:#fff}
-.askmsg{margin-top:10px;font-size:17px;font-weight:700;color:#15803d}
-.askbox{border:3px solid #16a34a}
-.foot{color:#888;font-size:13px;margin-top:24px;text-align:center}
+:root{--bg:#f7f4ee;--card:#fffdf9;--raised:#f1ece3;--ink:#1f1b16;--ink2:#5e554a;--mute:#736a5e;--line:rgba(31,27,22,.09);
+ --acc:#1d6b50;--acc-ink:#175a43;--warn:#8a5a12;--r:16px;color-scheme:light}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+ -webkit-text-size-adjust:100%;font-variant-numeric:tabular-nums}
+.w{max-width:560px;margin:0 auto;padding:24px 16px 48px}
+header h1{font-size:30px;line-height:1.15;font-weight:600;margin:0}
+.upd{color:var(--ink2);font-size:17px;margin-top:4px}
+.status{margin-top:12px;font-size:17px;color:var(--ink2)}
+.status .fb{display:flex;gap:10px;align-items:flex-start;margin-top:2px}
+#dadurl::placeholder{color:var(--mute);opacity:1}
+.dot{flex:none;width:10px;height:10px;border-radius:5px;background:var(--acc);margin-top:7px}
+.dot.warn{background:#c48a2c}
+section{margin-top:40px}
+h2{font-size:24px;line-height:1.2;font-weight:600;margin:0}
+.sub{color:var(--ink2);font-size:17px;margin:4px 0 0}
+.stack{display:grid;gap:20px;margin-top:16px}
+.card{background:var(--card);border-radius:var(--r);overflow:hidden;border:1px solid var(--line);box-shadow:0 1px 2px rgba(31,27,22,.05)}
+.ph{position:relative;aspect-ratio:16/10;background:var(--raised)}
+.ph img{width:100%;height:100%;object-fit:cover;display:block}
+.ph:not(:has(img))::after{content:"No photo";position:absolute;inset:0;display:flex;align-items:center;
+ justify-content:center;color:var(--mute);font-size:16px}
+.ph:not(:has(img)){aspect-ratio:16/5}
+.tag{position:absolute;top:12px;left:12px;background:var(--card);color:var(--ink);font-size:15px;font-weight:600;padding:4px 10px;
+ border-radius:8px;box-shadow:0 1px 2px rgba(31,27,22,.12)}
+.cb{padding:20px}
+h3{font-size:22px;line-height:1.25;font-weight:600;margin:0}
+.price{font-size:36px;line-height:1.1;font-weight:600;margin-top:8px;letter-spacing:-.01em}
+.save{color:var(--acc-ink);font-weight:600;margin-top:4px} .save.dim{color:var(--ink2);font-weight:400}
+.over{color:var(--warn);font-size:17px;margin-top:2px}
+.facts{margin-top:12px;color:var(--ink);font-size:17px;display:grid;gap:2px}
+.facts .where{color:var(--ink2)}
+.trip{display:flex;gap:8px;align-items:center;color:var(--warn)}
+.ic{width:18px;height:18px;flex:none}
+.gone{margin-top:12px;padding:8px 12px;border-radius:8px;background:var(--raised);color:var(--ink2);font-size:16px}
+.op{margin-top:16px;background:var(--raised);border-radius:12px;padding:12px 16px}
+.opl{font-size:15px;color:var(--ink2)}
+.oph{font-size:21px;font-weight:600;line-height:1.25;margin-top:2px}
+.op-buy .oph,.op-negotiate .oph{color:var(--acc-ink)}
+.ops{font-size:17px;color:var(--ink);margin-top:2px}
+details{margin-top:4px;font-size:17px;color:var(--ink2)}
+summary{cursor:pointer;color:var(--acc-ink);font-weight:500;min-height:44px;display:flex;align-items:center;text-decoration:underline;
+ text-underline-offset:3px;list-style:none} summary::-webkit-details-marker{display:none}
+details[open] summary{text-decoration:none}
+details p{margin:4px 0 0}
+.sum{margin:16px 0 0;font-size:18px}
+.pc{list-style:none;padding:0;margin:12px 0 0;display:grid;gap:8px}
+.pc li{display:flex;gap:10px;align-items:flex-start;font-size:17px;line-height:1.4}
+.pc .ic{margin-top:2px}
+.pc .g .ic{color:var(--acc)} .pc .b .ic{color:var(--warn)}
+.meta{margin-top:16px;color:var(--ink2);font-size:16px}
+.acts{display:flex;gap:12px;margin-top:16px}
+.btn{flex:1;display:flex;gap:8px;align-items:center;justify-content:center;min-height:52px;border-radius:12px;font-size:18px;font-weight:600;
+ text-decoration:none;color:var(--ink);background:var(--card);border:1px solid rgba(31,27,22,.22);transition:background-color .15s}
+.btn:active{transform:scale(.98)}
+.btn.pri{background:var(--acc);border-color:var(--acc);color:#fff}
+.btn:focus-visible,#dadbtn:focus-visible,#dadurl:focus-visible{outline:3px solid rgba(29,107,80,.35);outline-offset:2px}
+.ask{margin-top:16px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px;box-shadow:0 1px 2px rgba(31,27,22,.05)}
+.ask p{margin:0;font-size:17px;color:var(--ink2)}
+#dadurl{width:100%;margin-top:12px;font:inherit;font-size:18px;padding:14px 16px;min-height:56px;border:1px solid rgba(31,27,22,.25);
+ border-radius:12px;background:#fff;color:var(--ink)}
+#dadbtn{width:100%;margin-top:12px;min-height:56px;font:inherit;font-size:19px;font-weight:600;border:0;border-radius:12px;
+ background:var(--acc);color:#fff;display:flex;gap:8px;align-items:center;justify-content:center}
+#dadbtn:disabled{opacity:.6}
+.askmsg{margin-top:12px;font-size:17px;color:var(--acc-ink);font-weight:500}
+.askmsg:empty{display:none} .askmsg.bad{color:var(--warn)}
+.alert{background:var(--ink);color:#fff;border-radius:var(--r);padding:20px;margin-bottom:24px}
+.alert .al{font-size:15px;color:rgba(255,255,255,.75)}
+.alert .ah{font-size:22px;font-weight:600;line-height:1.3;margin-top:4px}
+.alert p{margin:8px 0 0;font-size:17px;color:rgba(255,255,255,.85)}
+.alert .btn{margin-top:16px;background:#fff;color:var(--ink);border-color:#fff}
+.leads{margin-top:16px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.lead{display:flex;gap:12px;align-items:center;padding:16px 12px 16px 20px;text-decoration:none;color:var(--ink)}
+.ll{flex:1;min-width:0}
+.la{font-size:18px;color:var(--ink);margin-top:4px} .la b{color:var(--acc-ink);font-weight:600}
+.opr{margin:8px 0 0;padding-left:20px;font-size:17px;color:var(--ink);display:grid;gap:4px}
+.wl{margin:8px 0 0;color:var(--ink2)}
+.op-skip .oph{color:var(--warn)}
+.chev{color:var(--mute)}
+.lead+.lead{border-top:1px solid var(--line)}
+.lead:active{background:var(--raised)}
+.lt{font-size:18px;font-weight:500;line-height:1.3}
+.lm{font-size:16px;color:var(--ink2);margin-top:2px}
+.empty{color:var(--ink2);font-size:17px;margin-top:12px}
+.foot{color:var(--ink2);font-size:17px;margin-top:48px;line-height:1.5;border-top:1px solid var(--line);padding-top:24px}
+.foot p{margin:0 0 12px} .foot b{color:var(--ink);font-weight:600}
 </style></head><body><div class="w">
-<h1>🚗 Anmol's Car Hunt</h1><div class="upd">Updated Thu Nov 26, 12:00 AM · checks Kijiji, AutoTrader and Marketplace all day</div>
-<h2 style="margin-top:6px">🔎 Found a car? I'll check it</h2>
-<div class="askbox"><div class="askt">Copy the ad's link (Marketplace, Kijiji or AutoTrader), paste it here, and tap <b>Check this car</b>.</div>
-<input id="dadurl" type="url" inputmode="url" placeholder="Paste the ad link here">
-<button id="dadbtn" onclick="dadSend()">Check this car</button><div id="dadmsg" class="askmsg"></div></div>
+<header><h1>Anmol's Car Hunt</h1><div class="upd">Updated Thu Nov 26, 12:30 AM</div></header>
+<div class="status"><div>8,354 ads checked in the last day (842 new)</div><div class="fb"><span class="dot"></span><span>Marketplace checked 12:00 AM</span></div></div>
+<section><h2>Found a car? I'll check it</h2>
+<div class="ask"><p>Copy the ad's link from Marketplace, Kijiji or AutoTrader, paste it here and tap Check this car.</p>
+<input id="dadurl" type="url" inputmode="url" autocomplete="off" placeholder="Paste the ad link" aria-label="Ad link">
+<button id="dadbtn" onclick="dadSend()"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>Check this car</button><div id="dadmsg" class="askmsg" role="status"></div></div>
 <script>
-async function dadSend(){const i=document.getElementById('dadurl'),m=document.getElementById('dadmsg'),v=(i.value||'').trim();
- if(!/^https?:\/\//.test(v)){m.textContent='That doesn\'t look like a link. In the ad, tap Share, then Copy link.';return;}
- try{await fetch('https://ntfy.sh/carhunt-7a9a1950b5e3d869',{method:'POST',body:v}); i.value=''; m.textContent='Got it! My answer shows up right below this box in about 30 minutes.';}
- catch(e){m.textContent='Could not send. Check the internet and try again.';}}
+async function dadSend(){const i=document.getElementById('dadurl'),m=document.getElementById('dadmsg'),b=document.getElementById('dadbtn');
+ const v=(i.value||'').trim(),u=(v.match(/https?:\/\/\S+/)||[])[0];
+ if(!u){m.className='askmsg bad';m.textContent='That does not look like a link. In the ad, tap Share, then Copy link.';return;}
+ b.disabled=true;
+ try{await fetch('https://ntfy.sh/carhunt-7a9a1950b5e3d869',{method:'POST',body:u}); i.value=''; m.className='askmsg';
+  m.textContent='Got it. The answer shows up under "Cars you sent me" in about an hour.';}
+ catch(e){m.className='askmsg bad';m.textContent='Could not send. Check the internet and try again.';}
+ b.disabled=false;}
 </script>
-<h2>Cars you sent me</h2>
+</section>
+<section><h2>Cars you sent me</h2><div class="stack">
 
-  <div class="c"><div class="tag">Maybe</div>
-    <img src="https://media.kijiji.ca/api/v1/ca-prod-fsbo-ads/images/06/063ce35d-22ea-459d-9fee-f652ce60d917?rule=kijijica-960-jpg" alt="" loading="lazy">
-    <div class="cb">
-      <div class="ct">2015 Kia sorento</div>
-      <div class="cp">$6,500</div>
-      <div class="save">About $1,900 below what this car usually sells for</div>
-      <div class="ln">147,000 km · Edmonton · private seller</div>
-      
-      <div class="sum">Good price on V6 Sorento; check VIN, lien, AWD tires and BC phone first.</div>
-      <ul><li>✅ 26% below estimated market value</li><li>✅ V6 avoids 2.4L Theta II issue</li><li>⚠️ 604 area code on an Edmonton listing — verify seller ID and Alberta registration</li></ul>
-      <div class="meta">On Kijiji · listed 3 days ago</div>
-      <div class="b2"><a class="bt p" href="https://www.kijiji.ca/v-cars-trucks/edmonton/2015-kia-sorento/1746536305" target="_blank" rel="noopener">Open the ad</a>
-        <a class="bt" href="https://www.google.com/maps/search/?api=1&query=Edmonton%2C+Alberta" target="_blank" rel="noopener">Directions</a></div>
-    </div>
+<article class="card">
+  <div class="ph"><img src="https://media.kijiji.ca/api/v1/ca-prod-fsbo-ads/images/06/063ce35d-22ea-459d-9fee-f652ce60d917?rule=kijijica-960-jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('nophoto');this.remove()"></div>
+  <div class="cb">
+    <h3>2015 Kia Sorento</h3>
+    <div class="price">$6,500</div>
+    <div class="save dim">About $1,900 below the usual price</div>
+    <div class="facts"><div>147,000 km · about 12,400 km a year</div><div class="where">Edmonton · Private seller</div></div>
+    <div class="op op-skip"><div class="opl">Opus says</div><div class="oph">Skip this one</div><ul class="opr"><li>BC 604 number: possible curbstoner or a BC-registered car that needs an Alberta out-of-province inspection (~$200 plus fixes)</li><li>Ad mentions Uber: possible high-wear or commercial use, no records</li></ul></div>
+    
+    
+    <div class="meta">Kijiji · listed 3 days ago</div>
+    <div class="acts"><a class="btn" href="https://www.kijiji.ca/v-cars-trucks/edmonton/2015-kia-sorento/1746536305" target="_blank" rel="noopener">Open the ad</a>
+      </div>
   </div>
-<h2>Best cars right now</h2>
+</article>
+</div></section>
+<section><h2>Best cars right now</h2><p class="sub">Biggest savings first, counting likely repairs</p><div class="stack">
 
-  <div class="c"><div class="tag">Top pick</div>
-    <img src="https://media.kijiji.ca/api/v1/ca-prod-fsbo-ads/images/9a/9a648f7f-fd04-40fb-920d-78623a141326?rule=kijijica-960-jpg" alt="" loading="lazy">
-    <div class="cb">
-      <div class="ct">2014 white Subaru Impreza automatic</div>
-      <div class="cp">$8,000</div>
-      <div class="save">About $4,200 below what this car usually sells for</div>
-      <div class="ln">99,000 km · South Central Edmonton · private seller</div>
-      
-      <div class="sum">Low-km AWD Subaru at a good price, but photos look like a car lot; check VIN and mechanic.</div>
-      <ul><li>✅ Low 99k km for a 2014</li><li>✅ Priced well below market estimate</li><li>⚠️ Photos appear taken in a commercial lot with other cars, despite private-seller ad</li></ul>
-      <div class="meta">On Kijiji · listed 7 days ago</div>
-      <div class="b2"><a class="bt p" href="https://www.kijiji.ca/v-cars-trucks/edmonton/2014-white-subaru-impreza-automatic/1746362224" target="_blank" rel="noopener">Open the ad</a>
-        <a class="bt" href="https://www.google.com/maps/search/?api=1&query=South+Central+Edmonton%2C+Alberta" target="_blank" rel="noopener">Directions</a></div>
-    </div>
+<article class="card">
+  <div class="ph"><img src="https://media.kijiji.ca/api/v1/ca-prod-fsbo-ads/images/9a/9a648f7f-fd04-40fb-920d-78623a141326?rule=kijijica-960-jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('nophoto');this.remove()"><span class="tag">Top pick</span></div>
+  <div class="cb">
+    <h3>2014 White Subaru Impreza Automatic</h3>
+    <div class="price">$8,000</div>
+    <div class="save">About $4,200 below the usual price</div>
+    <div class="facts"><div>99,000 km · about 7,700 km a year</div><div class="where">South Central Edmonton · Private seller</div></div>
+    <div class="op op-negotiate"><div class="opl">Opus says</div><div class="oph">Worth it at $7,300</div><div class="ops">Start at $7,300. Don&#x27;t go over $8,000</div><details><summary>Why?</summary><p class="wl">Watch out for</p><ul class="opr"><li>Possible curbstoner: photos look like a commercial lot</li><li>FB20 oil consumption, out of warranty</li><li>CVT fluid never serviced = $3-5k transmission risk</li></ul></details></div>
+    <p class="sum">Low-km AWD Subaru at a good price, but photos look like a car lot; check VIN and mechanic.</p>
+    <ul class="pc"><li class="g"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Low 99k km for a 2014</span></li><li class="g"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>AWD and heated seats suit Edmonton winters</span></li><li class="b"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg><span>Photos appear taken in a commercial lot with other cars, despite private-seller ad</span></li></ul>
+    <div class="meta">Kijiji · listed 7 days ago</div>
+    <div class="acts"><a class="btn pri" href="https://www.kijiji.ca/v-cars-trucks/edmonton/2014-white-subaru-impreza-automatic/1746362224" target="_blank" rel="noopener">Open the ad</a>
+      <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=South+Central+Edmonton%2C+Alberta" target="_blank" rel="noopener"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.99-5.53 10.19-7.4 11.8a1 1 0 0 1-1.2 0C9.53 20.19 4 14.99 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Directions</a></div>
   </div>
+</article>
 
-  <div class="c">
-    <img src="https://media.kijiji.ca/api/v1/ca-prod-fsbo-ads/images/d0/d05da245-b72e-48b1-8e40-1fe3ab0fcd05?rule=kijijica-960-jpg" alt="" loading="lazy">
-    <div class="cb">
-      <div class="ct">2017 Dodge Grndcrvn</div>
-      <div class="cp">$6,500</div>
-      <div class="save">About $3,600 below what this car usually sells for</div>
-      <div class="ln">180,000 km · Edmonton · private seller</div>
-      
-      <div class="sum">Cheap 2017 van with recent tires and brakes; check VIN, rust and transmission before buying.</div>
-      <ul><li>✅ Priced 33% below market estimate</li><li>✅ New winter tires and recent brakes</li><li>⚠️ 180,000 km and reliability tier C</li></ul>
-      <div class="meta">On Kijiji · listed 10 days ago</div>
-      <div class="b2"><a class="bt p" href="https://www.kijiji.ca/v-cars-trucks/edmonton/dodge-caravan-2017/1746224220" target="_blank" rel="noopener">Open the ad</a>
-        <a class="bt" href="https://www.google.com/maps/search/?api=1&query=Edmonton%2C+Alberta" target="_blank" rel="noopener">Directions</a></div>
-    </div>
+<article class="card">
+  <div class="ph"><img src="https://media.kijiji.ca/api/v1/ca-prod-fsbo-ads/images/d0/d05da245-b72e-48b1-8e40-1fe3ab0fcd05?rule=kijijica-960-jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('nophoto');this.remove()"></div>
+  <div class="cb">
+    <h3>2017 Dodge Caravan</h3>
+    <div class="price">$6,500</div>
+    <div class="save">About $3,600 below the usual price</div>
+    <div class="facts"><div>180,000 km · about 18,200 km a year</div><div class="where">Edmonton · Private seller</div></div>
+    <div class="op op-negotiate"><div class="opl">Opus says</div><div class="oph">Worth it at $5,800</div><div class="ops">Start at $5,800. Don&#x27;t go over $6,300</div><details><summary>Why?</summary><p class="wl">Watch out for</p><ul class="opr"><li>62TE transmission at 180k km (expect $3-4k if it goes)</li><li>Rust on rockers, rear wheel arches and subframe from salted roads</li><li>&#x27;SE&#x27; is a US trim name, so it may be a US import or a mislabeled CVP</li></ul></details></div>
+    <p class="sum">Cheap 2017 van with recent tires and brakes; check VIN, rust and transmission before buying.</p>
+    <ul class="pc"><li class="g"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>New winter tires and recent brakes</span></li><li class="g"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Recent struts, sway links, oil filter housing</span></li><li class="b"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg><span>Only exterior photos; no interior or underbody</span></li></ul>
+    <div class="meta">Kijiji · listed 10 days ago</div>
+    <div class="acts"><a class="btn pri" href="https://www.kijiji.ca/v-cars-trucks/edmonton/dodge-caravan-2017/1746224220" target="_blank" rel="noopener">Open the ad</a>
+      <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Edmonton%2C+Alberta" target="_blank" rel="noopener"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.99-5.53 10.19-7.4 11.8a1 1 0 0 1-1.2 0C9.53 20.19 4 14.99 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Directions</a></div>
   </div>
+</article>
 
-  <div class="c">
-    <img src="https://media.kijiji.ca/api/v1/ca-prod-fsbo-ads/images/89/89b423ae-376d-48d6-9632-a602046f80b0?rule=kijijica-960-jpg" alt="" loading="lazy">
-    <div class="cb">
-      <div class="ct">2012 Nissan Altima 2.5 S</div>
-      <div class="cp">$3,000</div>
-      <div class="save">About $3,400 below what this car usually sells for</div>
-      <div class="ln">144,700 km · Edmonton · private seller</div>
-      
-      <div class="sum">Cheap Altima but check-engine light and as-is sale mean get it inspected before buying.</div>
-      <ul><li>✅ Low 144,700 km for a 2012</li><li>✅ Winter tires/rims and remote starter included</li><li>⚠️ Check-engine light is on; cause and diagnostic report details unknown</li></ul>
-      <div class="meta">On Kijiji · listed 13 h ago</div>
-      <div class="b2"><a class="bt p" href="https://www.kijiji.ca/v-cars-trucks/edmonton/2012-nissan-altima-2-5-s/1746665203" target="_blank" rel="noopener">Open the ad</a>
-        <a class="bt" href="https://www.google.com/maps/search/?api=1&query=Edmonton%2C+Alberta" target="_blank" rel="noopener">Directions</a></div>
-    </div>
+<article class="card">
+  <div class="ph"><img src="https://media.kijiji.ca/api/v1/ca-prod-fsbo-ads/images/89/89b423ae-376d-48d6-9632-a602046f80b0?rule=kijijica-960-jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('nophoto');this.remove()"></div>
+  <div class="cb">
+    <h3>2012 Nissan Altima 2.5 S</h3>
+    <div class="price">$3,000</div>
+    <div class="save">About $3,400 below the usual price</div>
+    <div class="facts"><div>144,700 km · about 9,700 km a year</div><div class="where">Edmonton · Private seller</div></div>
+    
+    <p class="sum">Cheap Altima but check-engine light and as-is sale mean get it inspected before buying.</p>
+    <ul class="pc"><li class="g"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Low 144,700 km for a 2012</span></li><li class="g"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Winter tires/rims and remote starter included</span></li><li class="b"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg><span>Check-engine light is on; cause and diagnostic report details unknown</span></li></ul>
+    <div class="meta">Kijiji · listed 13 hours ago</div>
+    <div class="acts"><a class="btn pri" href="https://www.kijiji.ca/v-cars-trucks/edmonton/2012-nissan-altima-2-5-s/1746665203" target="_blank" rel="noopener">Open the ad</a>
+      <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Edmonton%2C+Alberta" target="_blank" rel="noopener"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.99-5.53 10.19-7.4 11.8a1 1 0 0 1-1.2 0C9.53 20.19 4 14.99 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Directions</a></div>
   </div>
+</article>
 
-  <div class="c">
-    <img src="https://media.kijiji.ca/api/v1/ca-prod-fsbo-ads/images/bf/bf10f31c-fa4a-4feb-833c-85522cce6a7b?rule=kijijica-960-jpg" alt="" loading="lazy">
-    <div class="cb">
-      <div class="ct">2013 RAM 2500 ST</div>
-      <div class="cp">$9,500</div>
-      <div class="save">About $3,200 below what this car usually sells for</div>
-      <div class="ln">175,000 km · Edmonton · private seller</div>
-      
-      <div class="sum">Cheap big truck, but recent engine work and rusty tailgate mean inspect carefully before buying.</div>
-      <ul><li>✅ Asking 29% below estimated private market value</li><li>✅ Carfax offered and no dash codes reported</li><li>⚠️ New lifters without mention of camshaft replacement is a Hemi red flag</li></ul>
-      <div class="meta">On Kijiji · listed 17 days ago</div>
-      <div class="b2"><a class="bt p" href="https://www.kijiji.ca/v-cars-trucks/edmonton/2013-ram-2500-st/1745939526" target="_blank" rel="noopener">Open the ad</a>
-        <a class="bt" href="https://www.google.com/maps/search/?api=1&query=Edmonton%2C+Alberta" target="_blank" rel="noopener">Directions</a></div>
-    </div>
+<article class="card">
+  <div class="ph"><img src="https://media.kijiji.ca/api/v1/ca-prod-fsbo-ads/images/bf/bf10f31c-fa4a-4feb-833c-85522cce6a7b?rule=kijijica-960-jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('nophoto');this.remove()"></div>
+  <div class="cb">
+    <h3>2013 RAM 2500 ST</h3>
+    <div class="price">$9,500</div>
+    <div class="save">About $3,200 below the usual price</div>
+    <div class="facts"><div>175,000 km · about 12,600 km a year</div><div class="where">Edmonton · Private seller</div></div>
+    
+    <p class="sum">Cheap big truck, but recent engine work and rusty tailgate mean inspect carefully before buying.</p>
+    <ul class="pc"><li class="g"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Carfax offered and no dash codes reported</span></li><li class="g"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>175,000 km is moderate for a 2013 truck</span></li><li class="b"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg><span>New lifters without mention of camshaft replacement is a Hemi red flag</span></li></ul>
+    <div class="meta">Kijiji · listed 17 days ago</div>
+    <div class="acts"><a class="btn pri" href="https://www.kijiji.ca/v-cars-trucks/edmonton/2013-ram-2500-st/1745939526" target="_blank" rel="noopener">Open the ad</a>
+      <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Edmonton%2C+Alberta" target="_blank" rel="noopener"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.99-5.53 10.19-7.4 11.8a1 1 0 0 1-1.2 0C9.53 20.19 4 14.99 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Directions</a></div>
   </div>
+</article>
 
-  <div class="c">
-    <img src="https://scontent.fyxd1-1.fna.fbcdn.net/v/t39.30808-6/925176453_29244363078554960_8338107240438141667_n.jpg?stp=dst-jpg_tt6&amp;cstp=mx2048x1536&amp;ctp=s960x960&amp;_nc_cat=101&amp;_nc_map=urlgen_bucketless&amp;ccb=1-7&amp;_nc_sid=454cf4&amp;_nc_ohc=cO7jZ3-MZAQQ7kNvwHcc14M&amp;_nc_oc=AdpMsgJjSAVF9J0KDJbh9zpiXZ8p-JXmrgxyflnjW2uqqF3jBJIgkCFj9N1bQr8vrSc&amp;_nc_zt=23&amp;_nc_ht=scontent.fyxd1-1.fna&amp;_nc_gid=89Ylj4wZX8DY_wNFJhPKTw&amp;_nc_ss=7b3a8&amp;oh=00_AQSZQVKSGr1Hk_VhglkenUyv8Q1fzSLydJmJfzMVrTz4rg&amp;oe=6B0C0B02" alt="" loading="lazy">
-    <div class="cb">
-      <div class="ct">2021 Chevrolet malibu</div>
-      <div class="cp">$8,500</div>
-      <div class="save">About $3,100 below what this car usually sells for</div>
-      <div class="ln">130,000 km · Edmonton, AB · private seller</div>
-      
-      <div class="sum">Cheap 2021 Malibu, but engine-swap story and low price need proof first.</div>
-      <ul><li>✅ Priced 29% below estimated market</li><li>✅ One-owner claim and many options</li><li>⚠️ Ad claims &#x27;new engine&#x27; but says engine/transmission has 130,000 km</li></ul>
-      <div class="meta">On Marketplace · listed 29 h ago</div>
-      <div class="b2"><a class="bt p" href="https://www.facebook.com/marketplace/item/1668604831464217/" target="_blank" rel="noopener">Open the ad</a>
-        <a class="bt" href="https://www.google.com/maps/search/?api=1&query=Edmonton%2C+AB%2C+Alberta" target="_blank" rel="noopener">Directions</a></div>
-    </div>
+<article class="card">
+  <div class="ph"><img src="https://scontent.fyxd1-1.fna.fbcdn.net/v/t39.30808-6/925176453_29244363078554960_8338107240438141667_n.jpg?stp=dst-jpg_tt6&amp;cstp=mx2048x1536&amp;ctp=s960x960&amp;_nc_cat=101&amp;_nc_map=urlgen_bucketless&amp;ccb=1-7&amp;_nc_sid=454cf4&amp;_nc_ohc=cO7jZ3-MZAQQ7kNvwHcc14M&amp;_nc_oc=AdpMsgJjSAVF9J0KDJbh9zpiXZ8p-JXmrgxyflnjW2uqqF3jBJIgkCFj9N1bQr8vrSc&amp;_nc_zt=23&amp;_nc_ht=scontent.fyxd1-1.fna&amp;_nc_gid=89Ylj4wZX8DY_wNFJhPKTw&amp;_nc_ss=7b3a8&amp;oh=00_AQSZQVKSGr1Hk_VhglkenUyv8Q1fzSLydJmJfzMVrTz4rg&amp;oe=6B0C0B02" alt="" loading="lazy" onerror="this.parentNode.classList.add('nophoto');this.remove()"></div>
+  <div class="cb">
+    <h3>2021 Chevrolet Malibu</h3>
+    <div class="price">$8,500</div>
+    <div class="save">About $3,000 below the usual price</div>
+    <div class="facts"><div>130,000 km · about 22,000 km a year</div><div class="where">Edmonton · Private seller</div></div>
+    
+    <p class="sum">Cheap 2021 Malibu, but engine-swap story and low price need proof first.</p>
+    <ul class="pc"><li class="g"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>One-owner claim and many options</span></li><li class="g"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>New tires and recent brakes claimed</span></li><li class="b"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg><span>Ad claims &#x27;new engine&#x27; but says engine/transmission has 130,000 km</span></li></ul>
+    <div class="meta">Marketplace · found 29 hours ago</div>
+    <div class="acts"><a class="btn pri" href="https://www.facebook.com/marketplace/item/1668604831464217/" target="_blank" rel="noopener">Open the ad</a>
+      <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Edmonton%2C+AB%2C+Alberta" target="_blank" rel="noopener"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.99-5.53 10.19-7.4 11.8a1 1 0 0 1-1.2 0C9.53 20.19 4 14.99 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Directions</a></div>
   </div>
+</article>
 
-  <div class="c">
-    <img src="https://scontent.fyxd2-1.fna.fbcdn.net/v/t39.30808-6/926124028_1009642062214327_4850473355324854711_n.jpg?stp=dst-jpg_tt6&amp;cstp=mx1200x1600&amp;ctp=s960x960&amp;_nc_cat=101&amp;_nc_map=urlgen_bucketless&amp;ccb=1-7&amp;_nc_sid=454cf4&amp;_nc_ohc=W38xKz1iO8UQ7kNvwHTtp_d&amp;_nc_oc=Adq6DTzZd7q_DxM6wk1v2RnNtoj8avg00CLvD46oiilDjBm6ltPPmH1bYG1ydZficKg&amp;_nc_zt=23&amp;_nc_ht=scontent.fyxd2-1.fna&amp;_nc_gid=9DjtajWmDSlTBEcULN-Nbg&amp;_nc_ss=7b3a8&amp;oh=00_AQRgUKUFJYePGKv_DXCDjWVhsZkc4taPPr7mV_f6JTE7RA&amp;oe=6B0C291D" alt="" loading="lazy">
-    <div class="cb">
-      <div class="ct">2020 Ford escape</div>
-      <div class="cp">$9,800</div>
-      <div class="save">About $3,000 below what this car usually sells for</div>
-      <div class="ln">129,000 km · Edmonton, AB · private seller</div>
-      
-      <div class="sum">Low price but no photos, base trim, and vague seller history; check VIN and inspection first.</div>
-      <ul><li>✅ Asking 24% below estimated market value</li><li>✅ Low km for a 2020 model</li><li>⚠️ No photos provided</li></ul>
-      <div class="meta">On Marketplace · listed 26 h ago</div>
-      <div class="b2"><a class="bt p" href="https://www.facebook.com/marketplace/item/1115617891480413/" target="_blank" rel="noopener">Open the ad</a>
-        <a class="bt" href="https://www.google.com/maps/search/?api=1&query=Edmonton%2C+AB%2C+Alberta" target="_blank" rel="noopener">Directions</a></div>
-    </div>
+<article class="card">
+  <div class="ph"><img src="https://scontent.fyxd2-1.fna.fbcdn.net/v/t39.30808-6/926124028_1009642062214327_4850473355324854711_n.jpg?stp=dst-jpg_tt6&amp;cstp=mx1200x1600&amp;ctp=s960x960&amp;_nc_cat=101&amp;_nc_map=urlgen_bucketless&amp;ccb=1-7&amp;_nc_sid=454cf4&amp;_nc_ohc=W38xKz1iO8UQ7kNvwHTtp_d&amp;_nc_oc=Adq6DTzZd7q_DxM6wk1v2RnNtoj8avg00CLvD46oiilDjBm6ltPPmH1bYG1ydZficKg&amp;_nc_zt=23&amp;_nc_ht=scontent.fyxd2-1.fna&amp;_nc_gid=9DjtajWmDSlTBEcULN-Nbg&amp;_nc_ss=7b3a8&amp;oh=00_AQRgUKUFJYePGKv_DXCDjWVhsZkc4taPPr7mV_f6JTE7RA&amp;oe=6B0C291D" alt="" loading="lazy" onerror="this.parentNode.classList.add('nophoto');this.remove()"></div>
+  <div class="cb">
+    <h3>2020 Ford Escape</h3>
+    <div class="price">$9,800</div>
+    <div class="save">About $3,000 below the usual price</div>
+    <div class="facts"><div>129,000 km · about 18,700 km a year</div><div class="where">Edmonton · Private seller</div></div>
+    <div class="op op-negotiate"><div class="opl">Opus says</div><div class="oph">Worth it at $8,800</div><div class="ops">Start at $8,800. Don&#x27;t go over $9,500</div><details><summary>Why?</summary><p>A nearly identical 2020 Escape S 1.5 with 128k km is listed by an Edmonton dealer at $15,477, which puts a fair private price near $12,200, so $9,800 is about 20% under.</p><p class="wl">Watch out for</p><ul class="opr"><li>Curbstoner/scam signs: FB account from 2023, no VIN, generic copy-paste ad</li><li>1.5L EcoBoost 3-cyl: coolant-loss/cracked-head reports and Ford oil-leak/injector fire recalls</li></ul></details></div>
+    
+    <ul class="pc"><li class="g"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Low km for a 2020 model</span></li><li class="g"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Claims accident-free and runs great</span></li><li class="b"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg><span>Seller joined Facebook in 2023</span></li></ul>
+    <div class="meta">Marketplace · found 27 hours ago</div>
+    <div class="acts"><a class="btn pri" href="https://www.facebook.com/marketplace/item/1115617891480413/" target="_blank" rel="noopener">Open the ad</a>
+      <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Edmonton%2C+AB%2C+Alberta" target="_blank" rel="noopener"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.99-5.53 10.19-7.4 11.8a1 1 0 0 1-1.2 0C9.53 20.19 4 14.99 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Directions</a></div>
   </div>
-<h2>New today</h2>
+</article>
+</div></section>
+<section><h2>Make an offer</h2><p class="sub">For sale for weeks or cut in price twice. The seller may take less.</p><div class="leads">
+<a class="lead" href="https://www.kijiji.ca/v-cars-trucks/edmonton/2018-hyundai-santa-fe-sport-limited-original-owned/1744650895" target="_blank" rel="noopener"><div class="ll"><div class="lt">2018 Hyundai Santa FE Sport Limited</div><div class="la">Asks $7,900 · <b>try $6,900</b></div><div class="lm">200,000 km · for sale 46 days</div><div class="lm">Kijiji · Edmonton</div></div><svg class="ic chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a>
+<a class="lead" href="https://www.kijiji.ca/v-cars-trucks/edmonton/2011-sierra-1500/1744714932" target="_blank" rel="noopener"><div class="ll"><div class="lt">2011 Sierra 1500</div><div class="la">Asks $7,500 · <b>try $6,600</b></div><div class="lm">225,000 km · for sale 45 days</div><div class="lm">Kijiji · Edmonton</div></div><svg class="ic chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a>
+<a class="lead" href="https://www.kijiji.ca/v-cars-trucks/edmonton/2013-sante-fe-sport/1745737424" target="_blank" rel="noopener"><div class="ll"><div class="lt">2013 Sante Fe Sport</div><div class="la">Asks $3,500 · <b>try $3,000</b></div><div class="lm">222,000 km · for sale 22 days</div><div class="lm">Kijiji · Edmonton</div></div><svg class="ic chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a>
+<a class="lead" href="https://www.kijiji.ca/v-cars-trucks/edmonton/infiniti-q50/1745620260" target="_blank" rel="noopener"><div class="ll"><div class="lt">2014 Infiniti Q50</div><div class="la">Asks $8,500 · <b>try $7,400</b></div><div class="lm">214,000 km · for sale 24 days</div><div class="lm">Kijiji · Edmonton</div></div><svg class="ic chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a>
+<a class="lead" href="https://www.kijiji.ca/v-cars-trucks/edmonton/2012-kia-forte5-sx-winter-ready-2-sets-of-tires/1745491225" target="_blank" rel="noopener"><div class="ll"><div class="lt">2012 Kia Forte5 SX Winter Ready</div><div class="la">Asks $3,400 · <b>try $2,900</b></div><div class="lm">230,000 km · for sale 27 days</div><div class="lm">Kijiji · Edmonton</div></div><svg class="ic chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a>
+</div></section>
+<section><h2>New today</h2><div class="stack">
 
-  <div class="c">
-    <img src="https://scontent.fyxd2-1.fna.fbcdn.net/v/t39.30808-6/927573254_122132150631485286_5127649739986292741_n.jpg?stp=dst-jpg_tt6&amp;cstp=mx1537x2048&amp;ctp=s960x960&amp;_nc_cat=105&amp;_nc_map=urlgen_bucketless&amp;ccb=1-7&amp;_nc_sid=454cf4&amp;_nc_ohc=WQk_k6SfMFYQ7kNvwG0yDhx&amp;_nc_oc=Adqb9yV55o3xR9TGDIbLG6WtmveU_nToiHe_Qau9m3mhZtOLhR0-eSGm_lRg09iUiII&amp;_nc_zt=23&amp;_nc_ht=scontent.fyxd2-1.fna&amp;_nc_gid=eGna0Hvl7jNO8DgaZo6Q8g&amp;_nc_ss=7b3a8&amp;oh=00_AQRO3fGV3uXuNu87DbK75VLoVaErbL0YgDB2SRJhQUNvkw&amp;oe=6B0D8BD5" alt="" loading="lazy">
-    <div class="cb">
-      <div class="ct">2018 Kia rio</div>
-      <div class="cp">$8,500</div>
-      <div class="save">About $2,200 below what this car usually sells for</div>
-      <div class="ln">55,100 km · Barrhead County No 11, AB · private seller</div>
-      
-      <div class="sum">Low-km manual Rio at a good price, but new seller and no photos—inspect and check VIN first.</div>
-      <ul><li>✅ Priced 21% below estimated market</li><li>✅ Low 55,100 km for a 2018</li><li>⚠️ New Facebook account — verify seller identity and VIN before paying</li></ul>
-      <div class="meta">On Marketplace · listed 2 h ago</div>
-      <div class="b2"><a class="bt p" href="https://www.facebook.com/marketplace/item/41346796031577724/" target="_blank" rel="noopener">Open the ad</a>
-        <a class="bt" href="https://www.google.com/maps/search/?api=1&query=Barrhead+County+No+11%2C+AB%2C+Alberta" target="_blank" rel="noopener">Directions</a></div>
-    </div>
+<article class="card">
+  <div class="ph"><img src="https://scontent.fyxd2-1.fna.fbcdn.net/v/t39.30808-6/927573254_122132150631485286_5127649739986292741_n.jpg?stp=dst-jpg_tt6&amp;cstp=mx1537x2048&amp;ctp=s960x960&amp;_nc_cat=105&amp;_nc_map=urlgen_bucketless&amp;ccb=1-7&amp;_nc_sid=454cf4&amp;_nc_ohc=WQk_k6SfMFYQ7kNvwG0yDhx&amp;_nc_oc=Adqb9yV55o3xR9TGDIbLG6WtmveU_nToiHe_Qau9m3mhZtOLhR0-eSGm_lRg09iUiII&amp;_nc_zt=23&amp;_nc_ht=scontent.fyxd2-1.fna&amp;_nc_gid=eGna0Hvl7jNO8DgaZo6Q8g&amp;_nc_ss=7b3a8&amp;oh=00_AQRO3fGV3uXuNu87DbK75VLoVaErbL0YgDB2SRJhQUNvkw&amp;oe=6B0D8BD5" alt="" loading="lazy" onerror="this.parentNode.classList.add('nophoto');this.remove()"></div>
+  <div class="cb">
+    <h3>2018 Kia Rio</h3>
+    <div class="price">$8,500</div>
+    <div class="save">About $2,200 below the usual price</div>
+    <div class="facts"><div>55,100 km · about 6,200 km a year</div><div class="where">Barrhead County No 11 · Private seller</div></div>
+    
+    
+    <ul class="pc"><li class="g"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Low 55,100 km for a 2018</span></li><li class="b"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg><span>New Facebook account — verify seller identity and VIN before paying</span></li></ul>
+    <div class="meta">Marketplace · found 3 hours ago</div>
+    <div class="acts"><a class="btn pri" href="https://www.facebook.com/marketplace/item/41346796031577724/" target="_blank" rel="noopener">Open the ad</a>
+      <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Barrhead+County+No+11%2C+AB%2C+Alberta" target="_blank" rel="noopener"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.99-5.53 10.19-7.4 11.8a1 1 0 0 1-1.2 0C9.53 20.19 4 14.99 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Directions</a></div>
   </div>
-<div class="foot">Cars under $10,000 around Edmonton. Prices are what the ad says; always see the car in person.</div>
+</article>
+</div></section>
+<footer class="foot"><p><b>Stay safe:</b> always see the car in person, and never send a deposit before you do.</p>
+<p>Cars around Edmonton for about $10,000, from Kijiji, AutoTrader and Marketplace, checked all day. Opus is the AI Anmol uses to double-check the best ones.</p></footer>
 </div></body></html>
